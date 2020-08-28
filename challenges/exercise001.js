@@ -39,12 +39,22 @@ function getMiddleCharacter(str) {
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  var reversed = "";
+  for (var i = word.length -1; i >= 0; i--) {
+    reversed += word[i];
+  }
+  return reversed;
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+  var revWords = new Array;
+  
+  for (var i = 0; i < words.length; i++) {
+    revWords.push(reverseWord(words[i]));
+  }
+  
+  return revWords;
 }
 
 function countLinuxUsers(users) {
