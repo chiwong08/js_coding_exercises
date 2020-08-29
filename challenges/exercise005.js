@@ -36,12 +36,17 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  var tmpString = n;
-  for (var i = 0; i < tmpString.length; i++ ){
-    console.log(tmpString[i]);
+  var tmpString = n.toString();
+  
+  if ( tmpString.length === 1 ) {
+    return n;     // as it's a single digit, reversing it is the same.
+  } else {
+    var reversed = "";
+    for (var i = tmpString.length -1; i >= 0; i--) {
+      reversed += tmpString[i];
+    }
+    return parseInt(reversed);
   }
-
-  return tmpString;
 };
 
 const sumArrays = arrs => {
