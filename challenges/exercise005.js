@@ -51,18 +51,51 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+  var total = 0;
+
+  for (var i = 0; i < arrs.length; i++ ) {
+    var tmpArr = arrs[i];
+    for (var j = 0; j < tmpArr.length; j++ ) {
+      total += tmpArr[j];
+    }
+  }
+  return total;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  var retArray = [];
+  var arrLen = arr.length;
+
+  if ( arrLen < 2 ) {
+    return arr;
+  } else if ( arrLen == 2 ) {
+    retArray[0] = arr[1];
+    retArray[1] = arr[0];
+  } else {
+    retArray.push(arr[arrLen - 1]);
+    for (var i = 1; i < arrLen -1; i++ ) {
+      retArray.push(arr[i]);
+    }
+    retArray.push(arr[0]);
+  }
+  return retArray;
 };
 
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
+  var found = false;
+
+  for (var key in haystack ) {
+    var value = haystack[key].toString();
+    if ( value.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
+      found = true;
+      break;
+    }
+  }
+
+  return found;
 };
 
 const getWordFrequencies = str => {
