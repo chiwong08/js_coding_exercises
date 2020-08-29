@@ -53,23 +53,56 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
+  var retArray = [];
+
+  for ( var i = 0; i < users.length; i++ ) {
+    if ( users[i].data.city.displayName != "" ) {
+      retArray.push( users[i].data.city.displayName );
+    }
+  }
+  return retArray;
 }
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  var retArray = [];
+
+  for ( var i = 0; i < nums.length; i++ ) {
+    retArray.push( Math.round( ( Math.sqrt(nums[i])) *100 ) / 100 );
+  }
+  return retArray;
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  var retArray = [];
+
+  for ( var i = 0; i < sentences.length; i++ ) {
+    if ( sentences[i].toLowerCase().indexOf( str.toLowerCase() ) != -1 ) {
+      retArray.push( sentences[i] );
+    }
+  }
+  return retArray;
 }
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  var retArray = [];
+
+  for ( var i = 0; i < triangles.length; i++ ) {
+    var aTriangle = triangles[i];
+    // define curLargest to hold temporary "largest" number in a triangle set.
+    var curLargest = 0;
+    for ( var j = 0; j < aTriangle.length; j++ ) {
+      aNum = aTriangle[j];
+      if ( aNum > curLargest ) {
+        curLargest = aNum;
+      }
+    }
+    retArray.push( curLargest );
+  }
+  return retArray;
 }
 
 module.exports = {
