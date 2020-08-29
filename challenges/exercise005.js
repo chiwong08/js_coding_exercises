@@ -100,29 +100,26 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
+
+  // hash will be what's to be returned
   var hash = {};
-  
+  // lets split the string into an array of words - makes it easier to process 
   var words = str.split(" ");
-console.log("******************************************************************************" + str);
-
-// for ( var q=0; q < words.length; q++ ) {
-//   var aWord = words[q];
-//   console.log("aWord = " + aWord + "**");
-//   aWord = aWord.replace(/[^A-Za-z0-9]/g,"");
-//   console.log("newWord = " + aWord + "*");
-// }
-// return str;
-
 
   for ( var i = 0; i < words.length; i++ ) {
     var theWord = words[i];
+    // as we'll ignore case, lets make them all lowercase for now.
     theWord = theWord.toLowerCase();
-    console.log("TheWord before removing ..." + theWord);
-    theWord = theWord.replace(/[^A-z0-9]/g,"");
-    console.log("TheWord with ! removed " + theWord);
 
-    if ( theWord in hash ) { hash[theWord]++; }
-    else { hash[theWord] = 1;}
+    // Now lets remove those special characters
+    theWord = theWord.replace(/[^A-z0-9]/g,"");
+    
+    // now lets check whethe the word in question exists in our hash map.
+    if ( theWord in hash ) {
+      hash[theWord]++;
+    } else {
+      hash[theWord] = 1;
+    }
 
   }
   return hash;
