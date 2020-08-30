@@ -64,38 +64,48 @@ function duplicateNumbers(arr1, arr2) {
   let retArray = [];
 //  console.log("************************************************************************")
 
-  let prevNum = 0;
-  for (let i = 0; i < arr1.length; i++) {
-    let searchNum = arr1[i];
-    if (searchNum !== prevNum) {
-      prevNum = searchNum;
-      for (let k = 0; k < arr2.length; k++) {
-        let hasFound = false;
-        let bNum = arr2[k];
-        if (searchNum == bNum) {
-          hasFound = true;
-          if (retArray.length == 0) {
-            retArray.push(searchNum);
-          } else {
-            for (let p = 0; p < retArray.length; p++) {
-              let raNum = retArray[p];
-              if (searchNum == raNum) {
-                break;
-              } else {
-                retArray.push(searchNum);
-                break;
-              }
-            }
-          }
-          if (hasFound == true) {
-            break;
-          }
-        }
-        if (hasFound == true) { break; }
+  // this is a lot simpler than the original methoid below.
+  arr1.forEach(function (num) {
+    if(arr2.indexOf(num) != -1) {
+      if ( retArray.indexOf(num) == -1) {
+        retArray.push(num);
       }
     }
+  });
 
-  }
+
+  // let prevNum = 0;
+  // for (let i = 0; i < arr1.length; i++) {
+  //   let searchNum = arr1[i];
+  //   if (searchNum !== prevNum) {
+  //     prevNum = searchNum;
+  //     for (let k = 0; k < arr2.length; k++) {
+  //       let hasFound = false;
+  //       let bNum = arr2[k];
+  //       if (searchNum == bNum) {
+  //         hasFound = true;
+  //         if (retArray.length == 0) {
+  //           retArray.push(searchNum);
+  //         } else {
+  //           for (let p = 0; p < retArray.length; p++) {
+  //             let raNum = retArray[p];
+  //             if (searchNum == raNum) {
+  //               break;
+  //             } else {
+  //               retArray.push(searchNum);
+  //               break;
+  //             }
+  //           }
+  //         }
+  //         if (hasFound == true) {
+  //           break;
+  //         }
+  //       }
+  //       if (hasFound == true) { break; }
+  //     }
+  //   }
+
+  // }
 //  console.log("retArray size = " + retArray.length + " --> " + retArray);
   //  return retArray;
   return retArray.sort();
