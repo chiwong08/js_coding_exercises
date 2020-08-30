@@ -2,7 +2,7 @@ function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
   var retSquares = new Array;
 
-  for (var i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     retSquares.push(nums[i] * nums[i]);
   }
   return retSquares;
@@ -12,7 +12,7 @@ function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   var ccWords = "";
 
-  for (var i = 0; i < words.length; i++) {
+  for (let i = 0; i < words.length; i++) {
     var loopWord = words[i];
     if (i === 0) {
       ccWords = loopWord.toLowerCase();
@@ -27,7 +27,7 @@ function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   var totSubjects = 0;
 
-  for (var i = 0; i < people.length; i++) {
+  for (let i = 0; i < people.length; i++) {
     totSubjects += people[i].subjects.length;
   }
 
@@ -39,9 +39,9 @@ function checkIngredients(menu, ingredient) {
   if (!ingredient) throw new Error("ingredient is required");
   var foundIngredient = false;
 
-  for (var i = 0; i < menu.length; i++) {
+  for (let i = 0; i < menu.length; i++) {
     var ingredientList = menu[i].ingredients;
-    for (var k = 0; k < ingredientList.length; k++) {
+    for (let k = 0; k < ingredientList.length; k++) {
       if (ingredientList[k].match(ingredient)) {
         foundIngredient = true;
       }
@@ -54,14 +54,14 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   var retArray = [];
-  console.log("************************************************************************")
+//  console.log("************************************************************************")
 
   var prevNum = 0;
-  for (var i = 0; i < arr1.length; i++) {
+  for (let i = 0; i < arr1.length; i++) {
     var searchNum = arr1[i];
     if (searchNum !== prevNum) {
       prevNum = searchNum;
-      for (var k = 0; k < arr2.length; k++) {
+      for (let k = 0; k < arr2.length; k++) {
         var hasFound = false;
         var bNum = arr2[k];
         if (searchNum == bNum) {
@@ -69,7 +69,7 @@ function duplicateNumbers(arr1, arr2) {
           if (retArray.length == 0) {
             retArray.push(searchNum);
           } else {
-            for (var p = 0; p < retArray.length; p++) {
+            for (let p = 0; p < retArray.length; p++) {
               var raNum = retArray[p];
               if (searchNum == raNum) {
                 break;
@@ -88,7 +88,7 @@ function duplicateNumbers(arr1, arr2) {
     }
 
   }
-  console.log("retArray size = " + retArray.length + " --> " + retArray);
+//  console.log("retArray size = " + retArray.length + " --> " + retArray);
   //  return retArray;
   return retArray.sort();
 }
@@ -101,10 +101,10 @@ function duplicateNumbers(arr1, arr2) {
 // console.log("************************************************************************")
 // ;console.log("RetArray Initialized to:" + retArray + "***");
 
-//   for ( var i = 0; i < arr1.length; i++ ) {   // iterate through array 1
+//   for ( let i = 0; i < arr1.length; i++ ) {   // iterate through array 1
 //     var searchNum = arr1[i];                      // number to search in arr2 for duplicate(s)
 // //console.log("SearchNum = " + searchNum);
-//     for ( var k = 0; k < arr2.length; k++ ) { // iterate through arr2
+//     for ( let k = 0; k < arr2.length; k++ ) { // iterate through arr2
 //       var hasFound = false;
 // //console.log("arr2 number - "+arr2[k]);
 //       var arr2Num = arr2[k];
@@ -115,7 +115,7 @@ function duplicateNumbers(arr1, arr2) {
 // //console.log("Initial add to retArray " + searchNum);
 //           retArray.push(searchNum);
 //         } else {
-//           for (var p = 0; p < retArray.length; p++ ){
+//           for (let p = 0; p < retArray.length; p++ ){
 //             var raNum = retArray[p];
 //             if ( searchNum == raNum ){
 // //console.log("found " + searchNum + " in retArray, ignoring!" ) ; break;          // do nothing, it's already in the list
