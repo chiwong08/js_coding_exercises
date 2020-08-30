@@ -1,6 +1,6 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  var retArray = [];
+  let retArray = [];
 
   // Original for loop
   // for (let i = 0; i < nums.length; i++) {
@@ -24,7 +24,7 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  var retArray = [];
+  let retArray = [];
 
   // initial solution - but should be replaced with version using filter (filter where first character = that supplied.)
   //for (let i = 0; i < names.length; i++) {
@@ -43,7 +43,7 @@ function findNamesBeginningWith(names, char) {
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  var retArray = [];
+  let retArray = [];
 
   //  // For loop version  
   //  for (let i = 0; i < words.length; i++) {
@@ -69,7 +69,7 @@ function findVerbs(words) {
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  var retArray = [];
+  let retArray = [];
 
   // // using for loop
   // if (nums.length === 0) {
@@ -113,7 +113,7 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  var retArray = [];
+  let retArray = [];
 
   // using traditonal for loop
   //for (let i = 0; i < users.length; i++) {
@@ -134,7 +134,7 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  var retArray = [];
+  let retArray = [];
 
   // traditional for loop
   //for (let i = 0; i < nums.length; i++) {
@@ -152,7 +152,7 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  var retArray = [];
+  let retArray = [];
 
   // traditional for loop
   //  for (let i = 0; i < sentences.length; i++) {
@@ -173,14 +173,14 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  var retArray = [];
+  let retArray = [];
 
   for (let i = 0; i < triangles.length; i++) {
-    var aTriangle = triangles[i];
+    let aTriangle = triangles[i];
     // define curLargest to hold temporary "largest" number in a triangle set.
-    var curLargest = 0;
+    let curLargest = 0;
     for (let j = 0; j < aTriangle.length; j++) {
-      var aNum = aTriangle[j];
+      let aNum = aTriangle[j];
       if (aNum > curLargest) {
         curLargest = aNum;
       }

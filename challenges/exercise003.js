@@ -1,31 +1,39 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  var retSquares = new Array;
+ 
+  // original answer
+  //for (let i = 0; i < nums.length; i++) {
+  //  const retSquares.push(nums[i] * nums[i]);
+  //}
 
-  for (let i = 0; i < nums.length; i++) {
-    retSquares.push(nums[i] * nums[i]);
-  }
+  // transformation
+  const retSquares = nums.map( num => {
+    return Math.pow(num,2);
+  });
+
   return retSquares;
 }
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  var ccWords = "";
+   let ccWords = "";
 
   for (let i = 0; i < words.length; i++) {
-    var loopWord = words[i];
+    let loopWord = words[i];
     if (i === 0) {
       ccWords = loopWord.toLowerCase();
     } else {
       ccWords += loopWord[0].toUpperCase() + loopWord.substring(1).toLowerCase();
     }
+
   }
+
   return ccWords;
 }
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  var totSubjects = 0;
+  let totSubjects = 0;
 
   for (let i = 0; i < people.length; i++) {
     totSubjects += people[i].subjects.length;
@@ -37,10 +45,10 @@ function getTotalSubjects(people) {
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  var foundIngredient = false;
+  let foundIngredient = false;
 
   for (let i = 0; i < menu.length; i++) {
-    var ingredientList = menu[i].ingredients;
+    let ingredientList = menu[i].ingredients;
     for (let k = 0; k < ingredientList.length; k++) {
       if (ingredientList[k].match(ingredient)) {
         foundIngredient = true;
@@ -53,24 +61,24 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  var retArray = [];
+  let retArray = [];
 //  console.log("************************************************************************")
 
-  var prevNum = 0;
+  let prevNum = 0;
   for (let i = 0; i < arr1.length; i++) {
-    var searchNum = arr1[i];
+    let searchNum = arr1[i];
     if (searchNum !== prevNum) {
       prevNum = searchNum;
       for (let k = 0; k < arr2.length; k++) {
-        var hasFound = false;
-        var bNum = arr2[k];
+        let hasFound = false;
+        let bNum = arr2[k];
         if (searchNum == bNum) {
           hasFound = true;
           if (retArray.length == 0) {
             retArray.push(searchNum);
           } else {
             for (let p = 0; p < retArray.length; p++) {
-              var raNum = retArray[p];
+              let raNum = retArray[p];
               if (searchNum == raNum) {
                 break;
               } else {
@@ -97,17 +105,17 @@ function duplicateNumbers(arr1, arr2) {
 // function duplicateNumbers(arr1, arr2) {
 //   if (arr1 === undefined) throw new Error("arr1 is required");
 //   if (arr2 === undefined) throw new Error("arr2 is required");
-//   var retArray = [];
+//   let retArray = [];
 // console.log("************************************************************************")
 // ;console.log("RetArray Initialized to:" + retArray + "***");
 
 //   for ( let i = 0; i < arr1.length; i++ ) {   // iterate through array 1
-//     var searchNum = arr1[i];                      // number to search in arr2 for duplicate(s)
+//     let searchNum = arr1[i];                      // number to search in arr2 for duplicate(s)
 // //console.log("SearchNum = " + searchNum);
 //     for ( let k = 0; k < arr2.length; k++ ) { // iterate through arr2
-//       var hasFound = false;
+//       let hasFound = false;
 // //console.log("arr2 number - "+arr2[k]);
-//       var arr2Num = arr2[k];
+//       let arr2Num = arr2[k];
 //       if ( searchNum == arr2Num ) {
 //         hasFound = true;
 // //console.log("Found :" + searchNum + " - arr2Num " + arr2Num);
@@ -116,7 +124,7 @@ function duplicateNumbers(arr1, arr2) {
 //           retArray.push(searchNum);
 //         } else {
 //           for (let p = 0; p < retArray.length; p++ ){
-//             var raNum = retArray[p];
+//             let raNum = retArray[p];
 //             if ( searchNum == raNum ){
 // //console.log("found " + searchNum + " in retArray, ignoring!" ) ; break;          // do nothing, it's already in the list
 //             } else {

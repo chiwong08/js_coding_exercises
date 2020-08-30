@@ -2,7 +2,7 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
 
-  var found = false;
+  let found = false;
 
   for (let i = 0; i < nums.length; i++) {
     if (found === true) {
@@ -20,7 +20,7 @@ const findNextNumber = (nums, n) => {
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
 
-  //var rObj = {};
+  //let rObj = {};
   //rObj["0"] = 0;
   //rObj["1"] = 0;
 
@@ -54,12 +54,12 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  var tmpString = n.toString();
+  let tmpString = n.toString();
 
   if (tmpString.length === 1) {
     return n;     // as it's a single digit, reversing it is the same.
   } else {
-    var reversed = "";
+    let reversed = "";
     for (let i = tmpString.length - 1; i >= 0; i--) {
       reversed += tmpString[i];
     }
@@ -69,10 +69,10 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  var total = 0;
+  let total = 0;
 
   for (let i = 0; i < arrs.length; i++) {
-    var tmpArr = arrs[i];
+    let tmpArr = arrs[i];
     for (let j = 0; j < tmpArr.length; j++) {
       total += tmpArr[j];
     }
@@ -82,8 +82,8 @@ const sumArrays = arrs => {
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  var retArray = [];
-  var arrLen = arr.length;
+  let retArray = [];
+  let arrLen = arr.length;
 
   if (arrLen < 2) {
     // single character array - cannot do anything, so returning as is
@@ -107,10 +107,10 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  var found = false;
+  let found = false;
 
   for (let key in haystack) {
-    var value = haystack[key].toString();
+    let value = haystack[key].toString();
     if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
       found = true;
       break;
@@ -124,12 +124,12 @@ const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
 
   // hash will be what's to be returned
-  var hash = {};
+  let hash = {};
   // lets split the string into an array of words - makes it easier to process 
-  var words = str.split(" ");
+  let words = str.split(" ");
 
   for (let i = 0; i < words.length; i++) {
-    var theWord = words[i];
+    let theWord = words[i];
     // as we'll ignore case, lets make them all lowercase for now.
     theWord = theWord.toLowerCase();
 
