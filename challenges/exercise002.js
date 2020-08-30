@@ -5,7 +5,7 @@ function getFillings(sandwich) {
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
-  if ( person.city === "Manchester" ) {
+  if (person.city === "Manchester") {
     return true;
   } else {
     return false;
@@ -14,15 +14,15 @@ function isFromManchester(person) {
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  return Math.ceil( people / 40 );
+  return Math.ceil(people / 40);
 }
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
   var numSheep = 0;
 
-  for (var i = 0; i < arr.length; i++){
-    if ( arr[i] === "sheep") {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === "sheep") {
       numSheep++;
     }
   }
@@ -34,8 +34,8 @@ function hasMPostCode(person) {
 
   var char1 = person.address.postCode[0];
   var char2 = person.address.postCode[1];
-  if ( char1 === "M" ) {
-    if ( ( char2 >= 0 ) && ( char2 <= 9) ) {
+  if (char1 === "M") {
+    if ((char2 >= 0) && (char2 <= 9)) {
       return true;
     }
   }
