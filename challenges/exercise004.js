@@ -175,18 +175,25 @@ function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
   let retArray = [];
 
-  for (let i = 0; i < triangles.length; i++) {
-    let aTriangle = triangles[i];
-    // define curLargest to hold temporary "largest" number in a triangle set.
-    let curLargest = 0;
-    for (let j = 0; j < aTriangle.length; j++) {
-      let aNum = aTriangle[j];
-      if (aNum > curLargest) {
-        curLargest = aNum;
-      }
-    }
-    retArray.push(curLargest);
-  }
+  // more elegant solution using Math.max()
+  triangles.forEach(function (triangle) {
+    retArray.push(Math.max(...triangle));
+  });
+
+
+  // // original solution  
+  // for (let i = 0; i < triangles.length; i++) {
+  //   let aTriangle = triangles[i];
+  //   // define curLargest to hold temporary "largest" number in a triangle set.
+  //   let curLargest = 0;
+  //   for (let j = 0; j < aTriangle.length; j++) {
+  //     let aNum = aTriangle[j];
+  //     if (aNum > curLargest) {
+  //       curLargest = aNum;
+  //     }
+  //   }
+  //   retArray.push(curLargest);
+  // }
   return retArray;
 }
 
