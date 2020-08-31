@@ -64,14 +64,19 @@ function duplicateNumbers(arr1, arr2) {
   let retArray = [];
 //  console.log("************************************************************************")
 
-  // this is a lot simpler than the original methoid below.
-  arr1.forEach(function (num) {
-    if(arr2.indexOf(num) != -1) {
-      if ( retArray.indexOf(num) == -1) {
-        retArray.push(num);
-      }
-    }
+  // now try using filter - an even simpler solution !
+  retArray = arr1.filter(function(num) {
+    return arr2.indexOf(num) != -1;
   });
+
+  // this is a lot simpler than the original methoid below.
+  // arr1.forEach(function (num) {
+  //   if(arr2.indexOf(num) != -1) {
+  //     if ( retArray.indexOf(num) == -1) {
+  //       retArray.push(num);
+  //     }
+  //   }
+  // });
 
 
   // let prevNum = 0;
