@@ -13,7 +13,7 @@ describe("sumMultiples", () => {
     expect(() => {
       sumMultiples(4);
     }).toThrow("arr must be an array of numbers")
-   
+
     expect(() => {
       sumMultiples(true);
     }).toThrow("arr must be an array of numbers")
@@ -38,5 +38,14 @@ describe("isValidDNA", () => {
     expect(() => {
       isValidDNA(true);
     }).toThrow("str is required");
+  });
+  test("simple check that str contains A, C, G, or T characters", () => {
+    expect(isValidDNA("oksdfjkosdfjsdkofvjsdkfj")).toBe(false);
+    expect(isValidDNA("CGATGCAGTAC")).toBe(true);
+    expect(isValidDNA("CGATFHTVGATSC")).toBe(false);
+  });
+  test("nixture of alphanumerics",() => {
+    expect(isValidDNA("CG232a340tT23")).toBe(false);
+    expect(isValidDNA("0CgTacTAC")).toBe(false);
   });
 });
