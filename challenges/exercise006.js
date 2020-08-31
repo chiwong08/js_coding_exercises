@@ -87,6 +87,23 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  // check a number is given
+  if (!Number.isInteger(n)) throw new Error("number is required");
+
+  // by definition, negtive numbers cannot be prime numbers.  Also, 1 is not a prime number.
+  if ( n <= 1 ) return false;
+
+  // now the real work to check is it a prime number
+  // given it is only prime if it's divisible by 1 and itself, we have to go through the long winded way
+  // we'll loop from 2 to (itself -1).  It is prime only if all of the range [ ( n % [2-(n-1)] != 0 ) ]
+  for (let i = 2; i < n-1; i++) {
+    if ( n % i === 0 ) {
+      return false;
+    }
+  }
+
+  // else it is a prime number
+  return true;
 };
 
 /**
@@ -103,6 +120,17 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  if (!Number.isInteger(n)) throw new Error("number is required");
+  if ( n < 1) throw new Error("n must be greater than 1");
+  // there's probably too manyt things to check what will be used to fill - but it could be anything.
+  // so unless there's a better criteria, I'll leave this check for now.
+  
+  return Array.from({
+    // generate n arrays
+    length: n
+  }, () => new Array(n).fill("foo"));   // each with n elements and fill them with "foo".
+
 };
 
 /**
