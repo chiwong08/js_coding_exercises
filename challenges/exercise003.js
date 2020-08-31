@@ -1,14 +1,14 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
- 
+
   // original answer
   //for (let i = 0; i < nums.length; i++) {
   //  const retSquares.push(nums[i] * nums[i]);
   //}
 
   // transformation
-  const retSquares = nums.map( num => {
-    return Math.pow(num,2);
+  const retSquares = nums.map(num => {
+    return Math.pow(num, 2);
   });
 
   return retSquares;
@@ -16,7 +16,7 @@ function getSquares(nums) {
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-   let ccWords = "";
+  let ccWords = "";
 
   for (let i = 0; i < words.length; i++) {
     let loopWord = words[i];
@@ -62,21 +62,26 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   let retArray = [];
-//  console.log("************************************************************************")
+  //  console.log("************************************************************************")
 
   // now try using filter - an even simpler solution !
-  retArray = arr1.filter(function(num) {
-    return arr2.indexOf(num) != -1;
-  });
+  // HOWEVER - when you have duplicates, it will also return duplicates
+  //   trying to lookup before adding to return array doesn't seem to work ..., so reveting to solution below.
+
+  // retArray = arr1.filter(function(num) {
+  //  if( retArray.indexOf(num) == -1) {
+  //    return arr2.indexOf(num) != -1;
+  //  }
+  //});
 
   // this is a lot simpler than the original methoid below.
-  // arr1.forEach(function (num) {
-  //   if(arr2.indexOf(num) != -1) {
-  //     if ( retArray.indexOf(num) == -1) {
-  //       retArray.push(num);
-  //     }
-  //   }
-  // });
+  arr1.forEach(function (num) {
+    if (arr2.indexOf(num) != -1) {
+      if (retArray.indexOf(num) == -1) {
+        retArray.push(num);
+      }
+    }
+  });
 
 
   // let prevNum = 0;
@@ -111,7 +116,7 @@ function duplicateNumbers(arr1, arr2) {
   //   }
 
   // }
-//  console.log("retArray size = " + retArray.length + " --> " + retArray);
+  //  console.log("retArray size = " + retArray.length + " --> " + retArray);
   //  return retArray;
   return retArray.sort();
 }
