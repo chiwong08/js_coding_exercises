@@ -1,10 +1,14 @@
 const { sumMultiples } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
-  test("throws an error if array is empty", () => {
+  test("throws an error if not passed an array", () => {
     expect(() => {
       sumMultiples();
     }).toThrow("arr is required");
+
+    expect(() => {
+      sumMultiples("foo");
+    }).toThrow("arr must be an array of numbers")
   })
   test("returns the sum from an array of numbers those that are dividble by 3 or 5", () => {
     const result = sumMultiples([1, 3, 5]);
