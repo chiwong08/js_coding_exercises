@@ -66,7 +66,10 @@ describe("isValidDNA", () => {
     expect(isValidDNA("0CgTacTAC")).toBe(false);
   });
 
-  
+  test("testing non-standard characters",() => {
+    expect(isValidDNA("C#G232a!40?T23")).toBe(false);
+    expect(isValidDNA("£Cg}acT<*")).toBe(false);
+  });
 });
 
 describe("getComplementaryDNA", () => {
@@ -83,6 +86,12 @@ describe("getComplementaryDNA", () => {
     expect(getComplementaryDNA("G")).toBe("C");
     expect(getComplementaryDNA("C")).toBe("G");
   });
+
+  test("test for special characteters", () => {
+    expect(() => {
+      getComplementaryDNA("!&*^£SJHJS");
+    }).toThrow("str containing cgat's only is required");
+  });
   // I don't think we can do much more as a correct DNA string is supplied, 
   // so once we can confirm that each letter is correctly transformed, it will always be correct.
 });
@@ -97,6 +106,9 @@ describe("isItPrime", () => {
     }).toThrow("number is required");
     expect(() => {
       isItPrime(0.123434);
+    }).toThrow("number is required");
+    expect(() => {
+      isItPrime(1.1);
     }).toThrow("number is required");
     expect(() => {
       isItPrime("abc");
@@ -141,6 +153,9 @@ describe("createMatrix", () => {
     expect(() => {
       createMatrix(-8, "foo");
     }).toThrow("n must be greater than 1");
+    expect(() => {
+      createMatrix(2.3, "foo");
+    }).toThrow("number is required");
   });
   
   test("a one by one matrix", () => {

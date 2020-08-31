@@ -64,7 +64,7 @@ const getComplementaryDNA = str => {
         break;
       default:
         // we shouldn't ever get here as it was meant to be a valid DNA string
-        throw new Error("str is required");
+        throw new Error("str containing cgat's only is required");
     }
   }
 
