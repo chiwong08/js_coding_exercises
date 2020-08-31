@@ -2,19 +2,29 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
 
-  let found = false;
-
-  for (let i = 0; i < nums.length; i++) {
-    if (found === true) {
-      return nums[i];
-    } else {
-      if (n === nums[i]) {
-        found = true;
-        continue;
-      }
+  //try using indexOf array to locate position, then advance to get next
+  let nextNum = null;
+  let index = nums.indexOf(n);
+  if (index >= 0 && index < nums.length - 1) {
+    if (index < nums.length - 1) {
+      nextNum = nums[index + 1];
     }
   }
-  return null;
+  return nextNum;
+
+  // let found = false;
+
+  // for (let i = 0; i < nums.length; i++) {
+  //   if (found === true) {
+  //     return nums[i];
+  //   } else {
+  //     if (n === nums[i]) {
+  //       found = true;
+  //       continue;
+  //     }
+  //   }
+  // }
+  // return null;
 };
 
 const count1sand0s = str => {
