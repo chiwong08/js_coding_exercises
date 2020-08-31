@@ -148,6 +148,29 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+
+  const daysInWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  if ( daysInWeek.indexOf(day) == -1 ) throw new Error("day must be in a day of the week Monday - Sunday");
+
+  const minNumStaff = 3;
+  let count = 0;
+  let covered = false;
+
+  // logic:  loop each staff, can use indexOf to search each staff's rota array.
+  // keep count on number found.   If count found == minNumStaff, we can set/return true
+  // to say we are covered for such a day.
+  for (let i = 0; i < staff.length; i++ ) {
+    let theRota = staff[i].rota;
+    if ( theRota.indexOf(day) != -1) {
+      count++;
+      if ( count == minNumStaff ) {
+        covered = true;
+        break;
+      }
+    }
+  }
+
+  return covered;
 };
 
 module.exports = {

@@ -3,7 +3,8 @@ const {
   isValidDNA,
   getComplementaryDNA,
   isItPrime,
-  createMatrix
+  createMatrix,
+  areWeCovered
 } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
@@ -171,4 +172,47 @@ describe("createMatrix", () => {
       ["foo", "foo", "foo"] 
     ])
   });
+});
+
+describe("areWeCovered", () => {
+  const staff = [
+    { name: "Sally", rota: ["Monday, Tuesday", "Friday"] },
+    { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"]},
+    { name: "William", rota: ["Monday", "Tuesday", "Wednesday", "Saturday"]},
+    { name: "Gary", rota: ["Monday", "Friday", "Saturday", "Sunday"]},
+    { name: "Sophie", rota: ["Wednesday", "Tuesday", "Monday"]},
+    { name: "Jess", rota: ["Tuesday", "Saturday", "Sunday"]}
+  ];
+ 
+  test("test for correct parameters passed in", () => {
+    expect(() => {
+      areWeCovered(undefined, undefined);
+    }).toThrow("staff is required");
+
+    expect(() => {
+      areWeCovered(undefined, "Monday");
+    }).toThrow("staff is required");
+
+    expect(() => {
+      areWeCovered(staff, "Mnday");
+    }).toThrow("day must be in a day of the week Monday - Sunday");
+
+    expect(() => {
+      areWeCovered(staff, undefined);
+    }).toThrow("day is required");
+  });
+
+  test("where not enough staff for any day - should return false", () => {
+    expect(areWeCovered(staff, "Thursday")).toBe(false);
+    expect(areWeCovered(staff, "Friday")).toBe(false);
+  });
+  test("where there's enough staff for any day - should return true", () => {
+    expect(areWeCovered(staff, "Saturday")).toBe(true);
+    expect(areWeCovered(staff, "Sunday")).toBe(true);
+    expect(areWeCovered(staff, "Monday")).toBe(true);
+    expect(areWeCovered(staff, "Tuesday")).toBe(true);
+    expect(areWeCovered(staff, "Wednesday")).toBe(true);
+
+  });
+
 });
