@@ -1,4 +1,6 @@
-const { sumMultiples, isValidDNA } = require("../challenges/exercise006");
+const { sumMultiples, 
+  isValidDNA,
+  getComplementaryDNA } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
   test("throws an error if not passed an array", () => {
@@ -49,3 +51,16 @@ describe("isValidDNA", () => {
     expect(isValidDNA("0CgTacTAC")).toBe(false);
   });
 });
+
+describe("getComplementaryDNA", () => {
+  test("returns correct complimentary DNA string", () => {
+    expect(getComplementaryDNA("AGCTCTAG")).toBe("TCGAGATC");
+    expect(getComplementaryDNA("A")).toBe("T");
+    expect(getComplementaryDNA("T")).toBe("A");
+    expect(getComplementaryDNA("G")).toBe("C");
+    expect(getComplementaryDNA("C")).toBe("G");
+  });
+  // I don't think we can do much more as a correct DNA string is supplied, 
+  // so once we can confirm that each letter is correctly transformed, it will always be correct.
+});
+

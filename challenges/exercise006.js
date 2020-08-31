@@ -41,6 +41,43 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  // again check string is passed in
+  if (typeof str != 'string') throw new Error("str is required");
+
+  // as it receives a valid DNA string, I won't bother checking that it's valid, otherwise, would 
+  str = str.toUpperCase();
+  let compString = "";
+  for ( let i = 0; i < str.length; i++ ) {
+    let char = str[i];
+    switch (char) {
+      case 'A':
+        compString += 'T';
+        break;
+      case 'C':
+        compString += 'G';
+        break;
+      case 'G':
+        compString += 'C';
+        break;
+      case 'T':
+        compString += 'A';
+        break;
+      default:
+        // we shouldn't ever get here as it was meant to be a valid DNA string
+        throw new Error("str is required");
+    }
+  }
+
+
+  // // the following would work if the input was an array, not a string.
+  // let compString = str.map(char => {
+  //   if ( char == "A") {return "T"}
+  //   else if (char == "T") {return "A"}
+  //   else if (char = "G") {return "C"}
+  //   else {return "G"};
+  // });
+  
+  return compString;
 };
 
 /**
