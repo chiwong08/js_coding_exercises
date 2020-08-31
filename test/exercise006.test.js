@@ -7,4 +7,8 @@ describe("sumMultiples", () => {
     expect(result).toBe(expected);
     expect(sumMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toBe(33);
   });
+  test("it works with decimal numbers", () => {
+    expect(sumMultiples([1, 3, 5.0, 2, 12, 10])).toBe(30);
+    expect(sumMultiples([1, 3, 5.1, 2, 12, 10])).toBe(25);
+  });
 });
