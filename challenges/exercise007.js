@@ -5,7 +5,7 @@
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
   if (!Number.isInteger(n)) throw new Error("n is not an integer");
-
+  
   // now that we have checked n is an integer, we can process its digits
   // lets convert to a string, then we can iterate over it digits
   // NB. when iterating through the string of digits, each are still characters, and so have to convert them to number again
@@ -28,6 +28,30 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (step === undefined) {
+    step = 1;
+  }
+  if ( (!Number.isInteger(step)) || (!Number.isInteger(start)) || (!Number.isInteger(end)) ) {
+    throw new Error("start, end or step - not an integer");
+  }
+
+  if (start >= end) throw new Error("cannot have start greater than or equal to end");
+  if (step > (end - start)) throw new Error("step is bigger than range possible");
+  
+  // The above is used to check that what we're given as input parameters are valid.
+  // The last check just makes sure we're not going to try and put in a step that'll go beyond the end.
+  // technically, it isn't required, as when you run the function, it'll not go beyond it anyway -
+  // if the logic is correct.
+
+  var range = [start], b = start;
+  while (b < end) {
+      range.push(b += step);
+  }
+
+  // the above array could end up with 1 too many - where b+step > end.
+  // therefore, we use slice to return all but the last (-1) element in those scenarios.
+  // use the ternary operator to return slice or the whole range (depending on b > end or not)
+  return (b > end) ? range.slice(0, -1) : range;
 };
 
 /**
