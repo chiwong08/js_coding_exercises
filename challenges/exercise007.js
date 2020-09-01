@@ -4,6 +4,17 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (!Number.isInteger(n)) throw new Error("n is not an integer");
+
+  // now that we have checked n is an integer, we can process its digits
+  // lets convert to a string, then we can iterate over it digits
+  // NB. when iterating through the string of digits, each are still characters, and so have to convert them to number again
+  let total = 0;
+  let nString = n.toString();
+  for (let i = 0; i < nString.length; i++) {
+    total += parseInt(nString[i]);
+  }
+  return total;
 };
 
 /**
