@@ -159,5 +159,7 @@ describe("hexToRGB", () => {
     }).toThrow("hexStr is required");
   });
 
-  
+  test("basic ones that work", () => {
+    expect(hexToRGB("FF1133")).toBe("rgb(255,17,51)");
+  });
 });

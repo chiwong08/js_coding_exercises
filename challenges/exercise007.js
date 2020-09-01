@@ -137,7 +137,8 @@ const hexToRGB = hexStr => {
   let bComp = hexStr.substring(4);
   let retStr = "";
 
-  retStr = "rgb(" + parseInt(rComp, 16) + "," + parseInt(gComp) + "," + parseInt(bComp) + ")";
+  retStr = "rgb(" + parseInt(rComp, 16) + "," + parseInt(gComp,16) + "," + parseInt(bComp,16) + ")";
+  return retStr;
 };
 
 /**
