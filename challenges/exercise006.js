@@ -44,8 +44,8 @@ const getComplementaryDNA = str => {
   // again check string is passed in
   if (typeof str != 'string') throw new Error("str is required");
 
-  // as it receives a valid DNA string, I won't bother checking that it's valid, otherwise, would 
-  str = str.toUpperCase();
+  // as it receives a valid DNA string, I won't bother checking that it's valid, but the below will check this anyway.
+    str = str.toUpperCase();
   let compString = "";
   for ( let i = 0; i < str.length; i++ ) {
     let char = str[i];

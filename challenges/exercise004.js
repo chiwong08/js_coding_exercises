@@ -16,7 +16,7 @@ function findSmallNums(nums) {
 
   // using filter  (best as it's to filter out small nums only)
   retArray = nums.filter(num => {
-    return num < 1
+    return num < 1;
   });
   return retArray;
 }
@@ -34,6 +34,7 @@ function findNamesBeginningWith(names, char) {
   //}
 
   // using filter - testing this version vs ES6 in other places.
+  //  retArray = names.filter(name => {           // <-- this would be the ES6 version
   retArray = names.filter(function (name) {
     return (name.substring(0, 1) == char);
   });
@@ -60,7 +61,8 @@ function findVerbs(words) {
   //});
 
   // using filter again - as we're filtering out those words with "to " as indicator for a verb
-  retArray = words.filter(function (word) {
+  //retArray = words.filter(function (word) {
+  retArray = words.filter(word => {               // <-- ES6
     return ("to " == word.substring(0, 3));
   });
 

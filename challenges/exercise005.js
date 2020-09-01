@@ -42,11 +42,12 @@ const count1sand0s = str => {
   //  }   // technically we are just going to ignore anything else
   //}
 
-  // lets try this in a different way - have to initialize 0 and 1 as one of the tests 
+  // lets try this in a different way -
+  // we have to initialize 0 and 1 as one of the tests 
   // doesn't include 0's but expects it in the returned list.  Otherwise, would have left it blank.
-  const frequencies ={0:0, 1:0};
+  const frequencies = { 0: 0, 1: 0 };
 
-  for ( let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     // this commented section would work if 0's were not required in the result set.
     // if (frequencies[str[i]] === undefined) {
     //   frequencies[str[i]] = 1;
@@ -58,8 +59,8 @@ const count1sand0s = str => {
     frequencies[str[i]]++;
   }
 
-    return frequencies;
-//  return rObj;
+  return frequencies;
+  //  return rObj;
 };
 
 const reverseNumber = n => {
