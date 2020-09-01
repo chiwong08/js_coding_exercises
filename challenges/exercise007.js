@@ -86,6 +86,29 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  // forEach user - get username
+  // loop screenTime array for given date
+  // tot up usage time for that date
+  // if >= 100, add to return array
+  // ideally, should also test for numbers in usage etc ...
+
+  let retArray = [];
+  users.forEach(user => {
+    let totTime = 0;
+    user.screenTime.forEach(day => {
+      if (day.date == date) {
+        for (let app in day.usage) {
+          let aTime = parseInt(day.usage[app]);
+          totTime += aTime;
+        };
+        if ( totTime >= 100 ) {
+          retArray.push(user.username.toString());
+        }
+      }
+    });
+  });
+  return retArray;
 };
 
 /**
