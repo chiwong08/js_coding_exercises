@@ -122,7 +122,22 @@ const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 const hexToRGB = hexStr => {
-  if (hexStr === undefined) throw new Error("hexStr is required");
+  if ( (hexStr === undefined) || (hexStr.length != 6) ) throw new Error("hexStr is required");
+    
+  if (!/^[A-F,0-9]+$/i.test(hexStr)) {
+    throw new Error("hexStr is required");
+  }
+
+  // split the hexStr into the 3 parts
+  // convert each into part into decimal equivalent
+  // format output
+
+  let rComp = hexStr.substring(0,2);
+  let gComp = hexStr.substring(2,4);
+  let bComp = hexStr.substring(4);
+  let retStr = "";
+
+  retStr = "rgb(" + parseInt(rComp, 16) + "," + parseInt(gComp) + "," + parseInt(bComp) + ")";
 };
 
 /**
