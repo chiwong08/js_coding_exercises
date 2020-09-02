@@ -158,31 +158,42 @@ const findWinner = board => {
   // winning can only occur in one of three ways:
   // all horizontal in any of the 3 rows;   all vertical in any of the 3 columns;   or diagonal or reverse diagonal
   // if any of the above 3 are occupied by either X or O, then there is a winner.
-  
-  let retVal = null;
 
-  for ( let r = 0; r < board.length; r++ ) {
-      let row = board[r];
-      let rowSize = row.length;
-      let starterElement = row[0];
-      
-      if (starterElement != null) {
-        let numSame = 1;
-        for (let i = 1; i < rowSize; i++) {
-          let theElement = row[i];
-          if (theElement != starterElement) {
-            break;
-          } else {
-            numSame++;
-          }
-        }
-        if (numSame === rowSize) {
-          retVal = starterElement;
-        }
-      }
+let retVal = null;
 
+  // this is over complicated as it caters for possibly n by n size boards, not just a 3 x 3 board
+  // for (let r = 0; r < board.length; r++) {
+  //   let row = board[r];
+  //   let rowSize = row.length;
+  //   let starterElement = row[0];
+
+  //   if (starterElement != null) {
+  //     let numSame = 1;
+  //     for (let i = 1; i < rowSize; i++) {
+  //       let theElement = row[i];
+  //       if (theElement != starterElement) {
+  //         break;
+  //       } else {
+  //         numSame++;
+  //       }
+  //     }
+  //     if (numSame === rowSize) {
+  //       retVal = starterElement;
+  //     }
+  //   }
+  // }
+
+  // so lets change it for the simple solution
+  for ( let i = 0; i < board.length; i++ ) {
+    row = board[i];
+    if ( (row[0] == row[1]) && (row[0] == row[2]) ) {
+console.log("row --> " + row[0] + ", " + row[1] + ", " + row[2]);
+      retVal = row[0];
     }
-    return retVal;
+  }
+
+
+  return retVal;
 };
 
 module.exports = {
