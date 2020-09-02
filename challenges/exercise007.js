@@ -5,7 +5,7 @@
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
   if (!Number.isInteger(n)) throw new Error("n is not an integer");
-  
+
   // now that we have checked n is an integer, we can process its digits
   // lets convert to a string, then we can iterate over it digits
   // NB. when iterating through the string of digits, each are still characters, and so have to convert them to number again
@@ -31,13 +31,13 @@ const createRange = (start, end, step) => {
   if (step === undefined) {
     step = 1;
   }
-  if ( (!Number.isInteger(step)) || (!Number.isInteger(start)) || (!Number.isInteger(end)) ) {
+  if ((!Number.isInteger(step)) || (!Number.isInteger(start)) || (!Number.isInteger(end))) {
     throw new Error("start, end or step - not an integer");
   }
 
   if (start >= end) throw new Error("cannot have start greater than or equal to end");
   if (step > (end - start)) throw new Error("step is bigger than range possible");
-  
+
   // The above is used to check that what we're given as input parameters are valid.
   // The last check just makes sure we're not going to try and put in a step that'll go beyond the end.
   // technically, it isn't required, as when you run the function, it'll not go beyond it anyway -
@@ -45,7 +45,7 @@ const createRange = (start, end, step) => {
 
   var range = [start], b = start;
   while (b < end) {
-      range.push(b += step);
+    range.push(b += step);
   }
 
   // the above array could end up with 1 too many - where b+step > end.
@@ -101,8 +101,8 @@ const getScreentimeAlertList = (users, date) => {
         for (let app in day.usage) {
           let aTime = parseInt(day.usage[app]);
           totTime += aTime;
-        };
-        if ( totTime >= 100 ) {
+        }
+        if (totTime >= 100) {
           retArray.push(user.username.toString());
         }
       }
@@ -122,8 +122,8 @@ const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 const hexToRGB = hexStr => {
-  if ( (hexStr === undefined) || (hexStr.length != 6) ) throw new Error("hexStr is required");
-    
+  if ((hexStr === undefined) || (hexStr.length != 6)) throw new Error("hexStr is required");
+
   if (!/^[A-F,0-9]+$/i.test(hexStr)) {
     throw new Error("hexStr is required");
   }
@@ -132,14 +132,15 @@ const hexToRGB = hexStr => {
   // convert each into part into decimal equivalent
   // format output
 
-  let rComp = hexStr.substring(0,2);
-  let gComp = hexStr.substring(2,4);
+  let rComp = hexStr.substring(0, 2);
+  let gComp = hexStr.substring(2, 4);
   let bComp = hexStr.substring(4);
   let retStr = "";
 
-  retStr = "rgb(" + parseInt(rComp, 16) + "," + parseInt(gComp,16) + "," + parseInt(bComp,16) + ")";
+  retStr = "rgb(" + parseInt(rComp, 16) + "," + parseInt(gComp, 16) + "," + parseInt(bComp, 16) + ")";
   return retStr;
 };
+
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
@@ -152,7 +153,36 @@ const hexToRGB = hexStr => {
  * @param {Array} board
  */
 const findWinner = board => {
-  if (board === undefined) throw new Error("board is required");
+  if ((board === undefined) || (board.length === 0)) throw new Error("board is required");
+
+  // winning can only occur in one of three ways:
+  // all horizontal in any of the 3 rows;   all vertical in any of the 3 columns;   or diagonal or reverse diagonal
+  // if any of the above 3 are occupied by either X or O, then there is a winner.
+  
+  let retVal = null;
+
+  for ( let r = 0; r < board.length; r++ ) {
+      let row = board[r];
+      let rowSize = row.length;
+      let starterElement = row[0];
+      
+      if (starterElement != null) {
+        let numSame = 1;
+        for (let i = 1; i < rowSize; i++) {
+          let theElement = row[i];
+          if (theElement != starterElement) {
+            break;
+          } else {
+            numSame++;
+          }
+        }
+        if (numSame === rowSize) {
+          retVal = starterElement;
+        }
+      }
+
+    }
+    return retVal;
 };
 
 module.exports = {

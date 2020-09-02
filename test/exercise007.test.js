@@ -2,7 +2,8 @@ const {
   sumDigits, 
   createRange,
   getScreentimeAlertList,
-  hexToRGB
+  hexToRGB,
+  findWinner
 } = require("../challenges/exercise007");
 
 describe("sumDigits", () => {
@@ -165,5 +166,37 @@ describe("hexToRGB", () => {
     expect(hexToRGB("1F2A3C")).toBe("rgb(31,42,60)");
     expect(hexToRGB("111111")).toBe("rgb(17,17,17)");
     expect(hexToRGB("F11BE3")).toBe("rgb(241,27,227)");
+  });
+});
+
+describe("findWinner", () => {
+  const board = [
+    ["X", "0", null],
+    ["X", null, "0"],
+    ["0", "X", null]
+  ]
+  const board2 = [
+    ["X", "0", null],
+    ["X", null, "0"],
+    ["X", "X", "X"]
+  ]
+  const board3 = [
+    ["X", "0", null],
+    ["X", null, "0"],
+    ["0", null, "0"]
+  ]
+  test("check for board being blank or undefined", () => {
+    expect(() => {
+      findWinner(undefined);
+    }).toThrow("board is required");
+    expect(() => {
+      findWinner([]);
+    }).toThrow("board is required");
+  });
+
+  test("where we have no winners and a horizontal winner", () => {
+    expect(findWinner(board)).toBe(null);
+    expect(findWinner(board2)).toBe("X");
+    expect(findWinner(board3)).toBe(null);
   });
 });
