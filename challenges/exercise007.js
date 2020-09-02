@@ -153,7 +153,7 @@ const hexToRGB = hexStr => {
  * @param {Array} board
  */
 const findWinner = board => {
-  if ((board === undefined) || (board.length === 0)) throw new Error("board is required");
+  if ((board === undefined) || (board.length === 0) || (board.length < 3)) throw new Error("board is required");
 
   // winning can only occur in one of three ways:
   // all horizontal in any of the 3 rows;   all vertical in any of the 3 columns;   or diagonal or reverse diagonal
@@ -183,12 +183,27 @@ let retVal = null;
   //   }
   // }
 
-  // so lets change it for the simple solution
+  // so lets change it for the simple horizontal solution
   for ( let i = 0; i < board.length; i++ ) {
     row = board[i];
     if ( (row[0] == row[1]) && (row[0] == row[2]) ) {
 console.log("row --> " + row[0] + ", " + row[1] + ", " + row[2]);
       retVal = row[0];
+    }
+  }
+
+  // simple vertical solution for a 3 x 3 board - only check if horizontal doesn't have a winner
+  if ( retVal == null ) {
+    let row1 = board[0];
+    let row2 = board[1];
+    let row3 = board[2];
+
+    if ( (row1[0] != null) && (row1[0] == row2[0]) && (row1[0] == row3[0]) ) {
+      retVal = row1[0];
+    } else if ( (row1[1] != null) && (row1[1] == row2[1]) && (row1[1] == row3[1]) ) {
+      retVal = row1[1];
+    } else if ( (row1[2] != null) && (row1[2] == row2[2]) && (row1[2] == row3[2]) ) {
+      retVal = row1[2];
     }
   }
 

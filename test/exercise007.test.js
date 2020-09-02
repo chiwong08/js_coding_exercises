@@ -185,12 +185,31 @@ describe("findWinner", () => {
     ["X", null, "0"],
     ["0", null, "0"]
   ]
+  const board4 = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ]
+  const board5 = [
+    [null, "0", "X"],
+    ["X", "0", "X"],
+    ["0", "0", null]
+  ]
+  const board6 = [
+    [null, "0", "X"],
+    ["X", "0", "X"],
+    ["0", "0", "X"]
+  ]
+
   test("check for board being blank or undefined", () => {
     expect(() => {
       findWinner(undefined);
     }).toThrow("board is required");
     expect(() => {
       findWinner([]);
+    }).toThrow("board is required");
+    expect(() => {
+      findWinner([["X", null, "0"],["0", null, "X"]]);
     }).toThrow("board is required");
   });
 
@@ -199,4 +218,13 @@ describe("findWinner", () => {
     expect(findWinner(board2)).toBe("X");
     expect(findWinner(board3)).toBe(null);
   });
+
+  test("test gfor vertical winner", () => {
+    expect(findWinner(board2)).toBe("X");
+    expect(findWinner(board)).toBe(null);
+    expect(findWinner(board3)).toBe(null);
+    expect(findWinner(board4)).toBe(null);
+    expect(findWinner(board5)).toBe("0");
+    expect(findWinner(board6)).toBe("0");
+  })
 });
