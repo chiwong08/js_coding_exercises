@@ -161,5 +161,9 @@ describe("hexToRGB", () => {
 
   test("basic ones that work", () => {
     expect(hexToRGB("FF1133")).toBe("rgb(255,17,51)");
+    expect(hexToRGB("FFFFFF")).toBe("rgb(255,255,255)");
+    expect(hexToRGB("1F2A3C")).toBe("rgb(31,42,60)");
+    expect(hexToRGB("111111")).toBe("rgb(17,17,17)");
+    expect(hexToRGB("F11BE3")).toBe("rgb(241,27,227)");
   });
 });
