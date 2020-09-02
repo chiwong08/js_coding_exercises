@@ -1,5 +1,5 @@
-const { 
-  sumMultiples, 
+const {
+  sumMultiples,
   isValidDNA,
   getComplementaryDNA,
   isItPrime,
@@ -25,19 +25,19 @@ describe("sumMultiples", () => {
       sumMultiples(true);
     }).toThrow("arr must be an array of numbers");
   })
-  
+
   test("returns the sum from an array of numbers those that are dividble by 3 or 5", () => {
     const result = sumMultiples([1, 3, 5]);
     const expected = 8;
     expect(result).toBe(expected);
     expect(sumMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toBe(33);
   });
-  
+
   test("it works with decimal numbers", () => {
     expect(sumMultiples([1, 3, 5.0, 2, 12, 10])).toBe(30);
     expect(sumMultiples([1, 3, 5.1, 2, 12, 10])).toBe(25);
   });
-  
+
   test("returns 0 if no numbers are divisible by 3 or 5", () => {
     expect(sumMultiples([1, 2, 4, 7, 8, 11])).toBe(0);
   });
@@ -49,25 +49,25 @@ describe("isValidDNA", () => {
       isValidDNA();
     }).toThrow("str is required");
   });
-  
+
   test("check if anything other than string is passed in", () => {
     expect(() => {
       isValidDNA(true);
     }).toThrow("str is required");
   });
-  
+
   test("simple check that str contains A, C, G, or T characters", () => {
     expect(isValidDNA("oksdfjkosdfjsdkofvjsdkfj")).toBe(false);
     expect(isValidDNA("CGATGCAGTAC")).toBe(true);
     expect(isValidDNA("CGATFHTVGATSC")).toBe(false);
   });
-  
-  test("mixture of alphanumerics",() => {
+
+  test("mixture of alphanumerics", () => {
     expect(isValidDNA("CG232a340tT23")).toBe(false);
     expect(isValidDNA("0CgTacTAC")).toBe(false);
   });
 
-  test("testing non-standard characters",() => {
+  test("testing non-standard characters", () => {
     expect(isValidDNA("C#G232a!40?T23")).toBe(false);
     expect(isValidDNA("£Cg}acT<*")).toBe(false);
   });
@@ -79,7 +79,7 @@ describe("getComplementaryDNA", () => {
       getComplementaryDNA();
     }).toThrow("str is required");
   });
-  
+
   test("returns correct complimentary DNA string", () => {
     expect(getComplementaryDNA("AGCTCTAG")).toBe("TCGAGATC");
     expect(getComplementaryDNA("A")).toBe("T");
@@ -115,7 +115,7 @@ describe("isItPrime", () => {
       isItPrime("abc");
     }).toThrow("number is required");
   });
-  
+
   test("checking if these numbers are prime number - includes decimals", () => {
     expect(isItPrime(-1)).toBe(false);
     expect(isItPrime(-8)).toBe(false);
@@ -140,7 +140,7 @@ describe("createMatrix", () => {
       createMatrix(undefined, undefined);
     }).toThrow("n is required");
   });
-  
+
   test("check n is an integer and >= 1", () => {
     expect(() => {
       createMatrix(true, "foo");
@@ -158,10 +158,10 @@ describe("createMatrix", () => {
       createMatrix(2.3, "foo");
     }).toThrow("number is required");
   });
-  
+
   test("a one by one matrix", () => {
     expect(createMatrix(1, "foo")).toEqual([
-      ["foo"] 
+      ["foo"]
     ])
   });
 
@@ -169,7 +169,7 @@ describe("createMatrix", () => {
     expect(createMatrix(3, "foo")).toEqual([
       ["foo", "foo", "foo"],
       ["foo", "foo", "foo"],
-      ["foo", "foo", "foo"] 
+      ["foo", "foo", "foo"]
     ])
   });
 });
@@ -177,13 +177,13 @@ describe("createMatrix", () => {
 describe("areWeCovered", () => {
   const staff = [
     { name: "Sally", rota: ["Monday, Tuesday", "Friday"] },
-    { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"]},
-    { name: "William", rota: ["Monday", "Tuesday", "Wednesday", "Saturday"]},
-    { name: "Gary", rota: ["Monday", "Friday", "Saturday", "Sunday"]},
-    { name: "Sophie", rota: ["Wednesday", "Tuesday", "Monday"]},
-    { name: "Jess", rota: ["Tuesday", "Saturday", "Sunday"]}
+    { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "William", rota: ["Monday", "Tuesday", "Wednesday", "Saturday"] },
+    { name: "Gary", rota: ["Monday", "Friday", "Saturday", "Sunday"] },
+    { name: "Sophie", rota: ["Wednesday", "Tuesday", "Monday"] },
+    { name: "Jess", rota: ["Tuesday", "Saturday", "Sunday"] }
   ];
- 
+
   test("test for correct parameters passed in", () => {
     expect(() => {
       areWeCovered(undefined, undefined);

@@ -45,9 +45,9 @@ const getComplementaryDNA = str => {
   if (typeof str != 'string') throw new Error("str is required");
 
   // as it receives a valid DNA string, I won't bother checking that it's valid, but the below will check this anyway.
-    str = str.toUpperCase();
+  str = str.toUpperCase();
   let compString = "";
-  for ( let i = 0; i < str.length; i++ ) {
+  for (let i = 0; i < str.length; i++) {
     let char = str[i];
     switch (char) {
       case 'A':
@@ -76,7 +76,7 @@ const getComplementaryDNA = str => {
   //   else if (char = "G") {return "C"}
   //   else {return "G"};
   // });
-  
+
   return compString;
 };
 
@@ -91,13 +91,13 @@ const isItPrime = n => {
   if (!Number.isInteger(n)) throw new Error("number is required");
 
   // by definition, negtive numbers cannot be prime numbers.  Also, 1 is not a prime number.
-  if ( n <= 1 ) return false;
+  if (n <= 1) return false;
 
   // now the real work to check is it a prime number
   // given it is only prime if it's divisible by 1 and itself, we have to go through the long winded way
   // we'll loop from 2 to (itself -1).  It is prime only if all of the range [ ( n % [2-(n-1)] != 0 ) ]
-  for (let i = 2; i < n-1; i++) {
-    if ( n % i === 0 ) {
+  for (let i = 2; i < n - 1; i++) {
+    if (n % i === 0) {
       return false;
     }
   }
@@ -122,10 +122,10 @@ const createMatrix = (n, fill) => {
   if (fill === undefined) throw new Error("fill is required");
 
   if (!Number.isInteger(n)) throw new Error("number is required");
-  if ( n < 1) throw new Error("n must be greater than 1");
+  if (n < 1) throw new Error("n must be greater than 1");
   // there's probably too manyt things to check what will be used to fill - but it could be anything.
   // so unless there's a better criteria, I'll leave this check for now.
-  
+
   return Array.from({
     // generate n arrays
     length: n
@@ -150,7 +150,7 @@ const areWeCovered = (staff, day) => {
   if (day === undefined) throw new Error("day is required");
 
   const daysInWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  if ( daysInWeek.indexOf(day) == -1 ) throw new Error("day must be in a day of the week Monday - Sunday");
+  if (daysInWeek.indexOf(day) == -1) throw new Error("day must be in a day of the week Monday - Sunday");
 
   const minNumStaff = 3;
   let count = 0;
@@ -159,11 +159,11 @@ const areWeCovered = (staff, day) => {
   // logic:  loop each staff, can use indexOf to search each staff's rota array.
   // keep count on number found.   If count found == minNumStaff, we can set/return true
   // to say we are covered for such a day.
-  for (let i = 0; i < staff.length; i++ ) {
+  for (let i = 0; i < staff.length; i++) {
     let theRota = staff[i].rota;
-    if ( theRota.indexOf(day) != -1) {
+    if (theRota.indexOf(day) != -1) {
       count++;
-      if ( count == minNumStaff ) {
+      if (count == minNumStaff) {
         covered = true;
         break;
       }

@@ -159,7 +159,7 @@ const findWinner = board => {
   // all horizontal in any of the 3 rows;   all vertical in any of the 3 columns;   or diagonal or reverse diagonal
   // if any of the above 3 are occupied by either X or O, then there is a winner.
 
-let retVal = null;
+  let retVal = null;
 
   // this is over complicated as it caters for possibly n by n size boards, not just a 3 x 3 board
   // for (let r = 0; r < board.length; r++) {
@@ -184,9 +184,9 @@ let retVal = null;
   // }
 
   // so lets change it for the simple horizontal solution
-  for ( let i = 0; i < board.length; i++ ) {
+  for (let i = 0; i < board.length; i++) {
     row = board[i];
-    if ( (row[0] == row[1]) && (row[0] == row[2]) ) {
+    if ((row[0] == row[1]) && (row[0] == row[2])) {
       retVal = row[0];
     }
   }
@@ -198,23 +198,23 @@ let retVal = null;
   // simple vertical solution for a 3 x 3 board - only check if horizontal doesn't have a winner
   // really should find a better solution like the commented solution above for horizontal winner
   // so that it can cater for a bigger board, not just 3 by 3.
-  if ( retVal == null ) {
-    if ( (row1[0] != null) && (row1[0] == row2[0]) && (row1[0] == row3[0]) ) {
+  if (retVal == null) {
+    if ((row1[0] != null) && (row1[0] == row2[0]) && (row1[0] == row3[0])) {
       retVal = row1[0];
-    } else if ( (row1[1] != null) && (row1[1] == row2[1]) && (row1[1] == row3[1]) ) {
+    } else if ((row1[1] != null) && (row1[1] == row2[1]) && (row1[1] == row3[1])) {
       retVal = row1[1];
-    } else if ( (row1[2] != null) && (row1[2] == row2[2]) && (row1[2] == row3[2]) ) {
+    } else if ((row1[2] != null) && (row1[2] == row2[2]) && (row1[2] == row3[2])) {
       retVal = row1[2];
     }
   }
 
   // if neither horizontal nor vertical yeilded a winner, check diagonals
-  if ( retVal == null ) {
-    if ( (row1[0] != null) && (row1[0] == row2[1]) && (row1[0] == row3[2]) ) {
+  if (retVal == null) {
+    if ((row1[0] != null) && (row1[0] == row2[1]) && (row1[0] == row3[2])) {
       retVal = row1[0];
-    } else if ( (row1[2] != null) && (row1[2] == row2[1]) && (row1[2] == row3[0]) ) {
+    } else if ((row1[2] != null) && (row1[2] == row2[1]) && (row1[2] == row3[0])) {
       retVal = row1[2];
-    }  
+    }
   }
 
 

@@ -1,5 +1,5 @@
-const { 
-  sumDigits, 
+const {
+  sumDigits,
   createRange,
   getScreentimeAlertList,
   hexToRGB,
@@ -56,7 +56,7 @@ describe("createRange", () => {
     }).toThrow("end is required");
 
     expect(() => {
-     createRange(10, 25, true);   // if step is undefined, it assumes value of 1
+      createRange(10, 25, true);   // if step is undefined, it assumes value of 1
     }).toThrow("start, end or step - not an integer");
   })
 
@@ -64,7 +64,7 @@ describe("createRange", () => {
     expect(() => {
       createRange(true, 200, 14);
     }).toThrow("start, end or step - not an integer");
-    
+
     expect(() => {
       createRange(100, "abc", 14);
     }).toThrow("start, end or step - not an integer");
@@ -92,8 +92,8 @@ describe("createRange", () => {
     expect(createRange(15, 25)).toEqual([15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]);
     expect(createRange(15, 70, 5)).toEqual([15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]);
     expect(createRange(15, 70, 8)).toEqual([15, 23, 31, 39, 47, 55, 63]);
-    expect(createRange(23,48,3)).toEqual([23, 26, 29, 32, 35, 38, 41, 44, 47]);
-    expect(createRange(23,45,3)).toEqual([23, 26, 29, 32, 35, 38, 41, 44]);
+    expect(createRange(23, 48, 3)).toEqual([23, 26, 29, 32, 35, 38, 41, 44, 47]);
+    expect(createRange(23, 45, 3)).toEqual([23, 26, 29, 32, 35, 38, 41, 44]);
   });
 });
 
@@ -103,11 +103,11 @@ describe("getScreentimeAlertList", () => {
       username: "beth_1234",
       name: "Beth Smith",
       screenTime: [
-                    { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
-                    { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
-                    { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
-                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
-                  ]
+        { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40 } },
+        { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+        { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+        { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+      ]
     },
     /*{
       username: "jon_4237",
@@ -123,10 +123,10 @@ describe("getScreentimeAlertList", () => {
       username: "sam_j_1989",
       name: "Sam Jones",
       screenTime: [
-                    { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
-                    { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
-                    { date: "2019-06-14", usage: { mapMyRun: 80, whatsApp: 0, facebook: 0, safari: 31} },
-                  ]
+        { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10 } },
+        { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+        { date: "2019-06-14", usage: { mapMyRun: 80, whatsApp: 0, facebook: 0, safari: 31 } },
+      ]
     },
   ]
 
@@ -209,7 +209,7 @@ describe("findWinner", () => {
       findWinner([]);
     }).toThrow("board is required");
     expect(() => {
-      findWinner([["X", null, "0"],["0", null, "X"]]);
+      findWinner([["X", null, "0"], ["0", null, "X"]]);
     }).toThrow("board is required");
   });
 
@@ -235,7 +235,7 @@ describe("findWinner", () => {
   test("test for diagonal winners", () => {
     const board7 = [
       ["X", null, "0"],
-      ["0","X","0"],
+      ["0", "X", "0"],
       ["0", null, "X"]
     ]
     const board8 = [
