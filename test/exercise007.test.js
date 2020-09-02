@@ -227,4 +227,23 @@ describe("findWinner", () => {
     expect(findWinner(board5)).toBe("0");
     expect(findWinner(board6)).toBe("0");
   })
+
+  test("test for Horizontal before finding vertical solution as per logic", () => {
+    expect(findWinner(board2)).toBe("X");
+  });
+
+  test("test for diagonal winners", () => {
+    const board7 = [
+      ["X", null, "0"],
+      ["0","X","0"],
+      ["0", null, "X"]
+    ]
+    const board8 = [
+      [null, "X", "0"],
+      ["X", "0", null],
+      ["0", null, "X"]
+    ]
+    expect(findWinner(board7)).toBe("X");
+    expect(findWinner(board8)).toBe("0");
+  });
 });

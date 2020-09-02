@@ -187,17 +187,18 @@ let retVal = null;
   for ( let i = 0; i < board.length; i++ ) {
     row = board[i];
     if ( (row[0] == row[1]) && (row[0] == row[2]) ) {
-console.log("row --> " + row[0] + ", " + row[1] + ", " + row[2]);
       retVal = row[0];
     }
   }
 
-  // simple vertical solution for a 3 x 3 board - only check if horizontal doesn't have a winner
-  if ( retVal == null ) {
-    let row1 = board[0];
-    let row2 = board[1];
-    let row3 = board[2];
+  let row1 = board[0];
+  let row2 = board[1];
+  let row3 = board[2];
 
+  // simple vertical solution for a 3 x 3 board - only check if horizontal doesn't have a winner
+  // really should find a better solution like the commented solution above for horizontal winner
+  // so that it can cater for a bigger board, not just 3 by 3.
+  if ( retVal == null ) {
     if ( (row1[0] != null) && (row1[0] == row2[0]) && (row1[0] == row3[0]) ) {
       retVal = row1[0];
     } else if ( (row1[1] != null) && (row1[1] == row2[1]) && (row1[1] == row3[1]) ) {
@@ -205,6 +206,15 @@ console.log("row --> " + row[0] + ", " + row[1] + ", " + row[2]);
     } else if ( (row1[2] != null) && (row1[2] == row2[2]) && (row1[2] == row3[2]) ) {
       retVal = row1[2];
     }
+  }
+
+  // if neither horizontal nor vertical yeilded a winner, check diagonals
+  if ( retVal == null ) {
+    if ( (row1[0] != null) && (row1[0] == row2[1]) && (row1[0] == row3[2]) ) {
+      retVal = row1[0];
+    } else if ( (row1[2] != null) && (row1[2] == row2[1]) && (row1[2] == row3[0]) ) {
+      retVal = row1[2];
+    }  
   }
 
 
