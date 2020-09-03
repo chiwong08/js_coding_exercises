@@ -62,8 +62,7 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   let retArray = [];
-  //  console.log("************************************************************************")
-
+  
   // now try using filter - an even simpler solution !
   // HOWEVER - when you have duplicates, it will also return duplicates
   //   trying to lookup before adding to return array doesn't seem to work ..., so reveting to solution below.
@@ -126,7 +125,7 @@ function duplicateNumbers(arr1, arr2) {
 //   if (arr1 === undefined) throw new Error("arr1 is required");
 //   if (arr2 === undefined) throw new Error("arr2 is required");
 //   let retArray = [];
-// console.log("************************************************************************")
+
 // ;console.log("RetArray Initialized to:" + retArray + "***");
 
 //   for ( let i = 0; i < arr1.length; i++ ) {   // iterate through array 1
