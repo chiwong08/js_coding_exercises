@@ -6,9 +6,9 @@ const findNextNumber = (nums, n) => {
   let nextNum = null;
   let index = nums.indexOf(n);
   if (index >= 0 && index < nums.length - 1) {
-    if (index < nums.length - 1) {
+    // if (index < nums.length - 1) {
       nextNum = nums[index + 1];
-    }
+    // }
   }
   return nextNum;
 

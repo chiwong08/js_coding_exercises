@@ -52,6 +52,7 @@ function checkIngredients(menu, ingredient) {
     for (let k = 0; k < ingredientList.length; k++) {
       if (ingredientList[k].match(ingredient)) {
         foundIngredient = true;
+        break;
       }
     }
   }
@@ -73,7 +74,7 @@ function duplicateNumbers(arr1, arr2) {
   //  }
   //});
 
-  // this is a lot simpler than the original methoid below.
+  // this is a lot simpler than the original method below.
   arr1.forEach(function (num) {
     if (arr2.indexOf(num) != -1) {
       if (retArray.indexOf(num) == -1) {
